@@ -134,4 +134,4 @@ Feel free to open an issue or submit a pull request if you have improvements or 
 ---
 
 ## 📜 **License**
-GNU License © 2025 Your Name
+GNU License © 2025 Yan Brasiliano Silva Penalva
