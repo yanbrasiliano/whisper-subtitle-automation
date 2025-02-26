@@ -31,12 +31,12 @@ brew install python3         # macOS
 choco install python         # Windows (with Chocolatey)
 
 # Install FFmpeg
-sudo apt install ffmpeg -y  # Debian/Ubuntu
-brew install ffmpeg         # macOS
-choco install ffmpeg        # Windows (with Chocolatey)
+sudo apt install ffmpeg -y   # Debian/Ubuntu
+brew install ffmpeg          # macOS
+choco install ffmpeg         # Windows (with Chocolatey)
 
 # Install iconv (already included in most Unix-based OS)
-sudo apt install iconv -y  # Debian/Ubuntu
+sudo apt install iconv -y    # Debian/Ubuntu
 
 # Install Whisper AI via pip
 pip install openai-whisper
@@ -47,7 +47,7 @@ pip install openai-whisper
 ## 🚀 **Usage**
 1️⃣ **Clone the repository**
 ```bash
-git clone https://github.com/your-username/whisper-subtitle-automation.git
+git clone https://github.com/yanbrasiliano/whisper-subtitle-automation.git
 cd whisper-subtitle-automation
 ```
 
@@ -76,46 +76,46 @@ chmod +x batch_whisper_subtitles.sh
 
 ---
 
-## 📌 **Example**
-### **Before running the script**
-```
-/videos/
- ├── my_video.mp4
- ├── another_video.mp4
- ├── batch_whisper_subtitles.sh
+## 🐍 **Python Alternative**
+
+In addition to the shell script, we provide a **Python version** that offers better performance through **parallelism and asynchronous processing**.
+
+### 🔹 **Advantages of the Python Script**
+- **Parallelism and Asynchronous Execution:** Uses asynchronous processing to **speed up performance**, allowing multiple videos to be processed simultaneously.
+- **Flexibility:** Easier to modify and extend for future improvements.
+
+### 🔹 **Considerations**
+- **Resource Consumption:** The Python script **requires more RAM and CPU power** due to parallel processing.
+- **Additional Dependencies:** Requires Python libraries like `tqdm`, `aiofiles`, and `concurrent.futures`.
+
+### 🔹 **Installing and Running the Python Script**
+1️⃣ **Install the necessary dependencies:**
+```bash
+pip install openai-whisper aiofiles tqdm
 ```
 
-### **After running the script**
+2️⃣ **Place your `.mp4` files inside the script folder.**
+
+3️⃣ **Run the Python script:**
+```bash
+python batch_whisper_subtitles.py
 ```
-/videos/
- ├── my-video_subtitled_en_us.mp4
- ├── another-video_subtitled_en_us.mp4
- ├── batch_whisper_subtitles.sh  # The script remains
-```
-🚀 **The script automatically renames files and deletes temporary subtitle files!**
 
----
+4️⃣ **Wait for processing:**
+- The script will **generate and embed subtitles** automatically.
+- The processed videos will be saved with the suffix `_subtitled_en_us.mp4`.
 
-## 🔧 **Customization**
-- To change the subtitle **language**, edit this line inside the script:
-  ```bash
-  WHISPER_LANG="English"
-  ```
-  For other languages, check the full list here: [Whisper Supported Languages](https://github.com/openai/whisper/blob/main/whisper/tokenizer.py#L10).
-
-- To use a **different Whisper model**, change this line:
-  ```bash
-  MODEL="base"  # Options: tiny, base, small, medium, large
-  ```
+5️⃣ **Temporary Files Cleanup:**
+- The script **automatically deletes** the generated temporary files (`.srt`, `.tsv`, `.txt`, `.vtt`, `.json`).
 
 ---
 
 ## ❓ **FAQ**
 #### **1. Can I process multiple videos at once?**
-Yes! The script will automatically process all `.mp4` files in the directory.
+Yes! Both scripts will automatically process all `.mp4` files in the directory.
 
-#### **2. What if a video already has subtitles?**
-The script will **embed new AI-generated subtitles** into the video.
+#### **2. What happens if a video already has subtitles?**
+The scripts will **embed new AI-generated subtitles** into the video.
 
 #### **3. How do I change the output format?**
 By default, the output file is named:  
@@ -123,8 +123,8 @@ By default, the output file is named:
 You can modify the naming format inside the script.
 
 #### **4. The script removed some files. Is that normal?**
-Yes! The script automatically **deletes temporary Whisper files** (`.srt`, `.tsv`, `.txt`, `.vtt`, `.json`).  
-It **never deletes your original videos or the script itself**.
+Yes! Both scripts **automatically delete temporary Whisper files** (`.srt`, `.tsv`, `.txt`, `.vtt`, `.json`).  
+They **never delete your original videos or the script itself**.
 
 ---
 
